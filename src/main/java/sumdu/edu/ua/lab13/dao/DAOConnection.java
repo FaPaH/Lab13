@@ -40,16 +40,18 @@ public class DAOConnection {
                 for (int j = 0; j < data.getLength(); j++) {
                     Node params = data.item(j);
                     String param = params.getTextContent().replaceAll("\\s", "");
-                    dataList.add(param);
+                    if (!param.equals("")) {
+                        dataList.add(param);
+                    }
 //                    System.out.println(param);
                 }
             }
 
-            sourceName = dataList.get(1);
-            url = dataList.get(3);
-            driver = dataList.get(5);
-            username = dataList.get(7);
-            password = dataList.get(9);
+            sourceName = dataList.get(0);
+            url = dataList.get(1);
+            driver = dataList.get(2);
+            username = dataList.get(3);
+            password = dataList.get(4);
 
 //            System.out.println(dataList);
 

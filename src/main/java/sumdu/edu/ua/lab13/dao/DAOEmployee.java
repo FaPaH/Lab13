@@ -34,6 +34,7 @@ public class DAOEmployee {
             statement.setInt(1, employeeId);
             resultSet = statement.executeQuery();
             employees = employeeParser.parseEmployees(resultSet);
+            close();
         } catch (SQLException e) {
             System.out.println("SQLException in getEmployeeById");
             e.printStackTrace();
@@ -51,6 +52,7 @@ public class DAOEmployee {
                     "ORDER BY e.empno ASC");
             resultSet = statement.executeQuery();
             employees = employeeParser.parseEmployees(resultSet);
+            close();
         } catch (SQLException e) {
             System.out.println("SQLException in getEmployeeList");
             e.printStackTrace();
@@ -70,6 +72,7 @@ public class DAOEmployee {
             statement.setInt(6, commPCT);
             statement.setInt(7, depId);
             resultSet = statement.executeQuery();
+            close();
         } catch (SQLException e) {
             System.out.println("SQLException in addEmployee");
             e.printStackTrace();
@@ -81,8 +84,18 @@ public class DAOEmployee {
             statement = connection.prepareStatement("DELETE FROM EMP WHERE EMPNO = ?");
             statement.setInt(1, employeeId);
             resultSet = statement.executeQuery();
+            close();
         } catch (SQLException e) {
             System.out.println("SQLException in removeEmployee");
+            e.printStackTrace();
+        }
+    }
+
+    private void close(){
+        try{
+            resultSet.close();
+        } catch (SQLException e){
+            System.out.println("SQLException in close");
             e.printStackTrace();
         }
     }
