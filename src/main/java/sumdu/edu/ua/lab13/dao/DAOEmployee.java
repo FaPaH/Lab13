@@ -35,6 +35,7 @@ public class DAOEmployee {
             resultSet = statement.executeQuery();
             employees = employeeParser.parseEmployees(resultSet);
         } catch (SQLException e) {
+            System.out.println("SQLException in getEmployeeById");
             e.printStackTrace();
         }
         return employees.get(0);
@@ -51,6 +52,7 @@ public class DAOEmployee {
             resultSet = statement.executeQuery();
             employees = employeeParser.parseEmployees(resultSet);
         } catch (SQLException e) {
+            System.out.println("SQLException in getEmployeeList");
             e.printStackTrace();
         }
         return employees;
@@ -69,6 +71,7 @@ public class DAOEmployee {
             statement.setInt(7, depId);
             resultSet = statement.executeQuery();
         } catch (SQLException e) {
+            System.out.println("SQLException in addEmployee");
             e.printStackTrace();
         }
     }
@@ -79,6 +82,7 @@ public class DAOEmployee {
             statement.setInt(1, employeeId);
             resultSet = statement.executeQuery();
         } catch (SQLException e) {
+            System.out.println("SQLException in removeEmployee");
             e.printStackTrace();
         }
     }

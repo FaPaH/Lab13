@@ -18,6 +18,7 @@ public class EmployeeParser {
                 employees.add(getEmployee(resultSet));
             }
         } catch (SQLException e) {
+            System.out.println("SQLException in parseEmployees");
             e.printStackTrace();
         }
         return employees;
@@ -36,6 +37,7 @@ public class EmployeeParser {
 
             employee = new Employee(employeeId, employeeName, employeeJob, employeeMgr, hireDate, salary, commPCT, depName);
         } catch (SQLException e) {
+            System.out.println("SQLException in getEmployee");
             e.printStackTrace();
         }
         return employee;

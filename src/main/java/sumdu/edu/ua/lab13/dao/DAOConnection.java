@@ -73,6 +73,7 @@ public class DAOConnection {
         } catch (SQLException e) {
             System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
         } catch (Exception e) {
+            System.out.println("Exception in connect");
             e.printStackTrace();
         }
     }
